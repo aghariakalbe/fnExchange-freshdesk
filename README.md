@@ -1,21 +1,18 @@
-# fnExchange Slack Plugin
-This is a plugin for the fnExchange API router for interacting with Slack.
+# fnExchange Freshdesk Plugin
+This is a plugin for the fnExchange API router for interacting with Freshdesk's ticket management system
 
-This plugin currently only provides an Action for posting messages to a Slack
-channel using inbound webhooks. This only requires the inbound webhook URL token.
-
-You can get the Slack webhook URL [here](https://my.slack.com/services/new/incoming-webhook/)
+This plugin currently provides actions that include creating, updating, deleting, viewing tickets and contacts
 
 # Installation
-Simply install this as
+To install this change current working directory to fnexchange-freshdesk and run
 ```
-$ pip install fnexchange-slack
+$ pip install .
 ```
 
 # Configuration
 To use this plugin with fnExchange, add the appropriate configuration to the `fnexchange.yml`
 configuration file under `plugins_enabled`. A sample configuration is provided below.
-Of course, note that you can use any alias instead of "slacker".
+Of course, note that you can use any alias instead of "freshdesk".
 
 The plugin **requires** the `url` configuration.
 
@@ -23,10 +20,11 @@ The plugin **requires** the `url` configuration.
 ...
   plugins_enabled:
     ...
-    slacker:
-      class_name: 'fnexchange_slack.SlackPlugin'
+    freshdesk:
+      class_name: 'fnexchange_slack.FreshdeskPlugin'
       config:
-        url: 'https://hooks.slack.com/services/T00000000/B00000000/XXXXXXXXXXXXXXXXXXXXXXXX'
+        url: 'www.domain.freshdesk.com'
+        api_key:'Freshdesk Api key'
     ...
 ...
 ```
