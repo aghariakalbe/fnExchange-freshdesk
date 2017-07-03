@@ -1,12 +1,9 @@
 """
 Overview
 ========
-This is a plugin for the fnExchange API router for interacting with Slack.
+This is a plugin for the fnExchange API router for interacting with Freshdesk.
 
-This plugin currently only provides an Action for posting messages to a Slack
-channel using inbound webhooks. This only requires the inbound webhook URL token.
-
-More details about this plugin can be found `here <http://github.com/bhumilharia/fnexchange-slack>`_
+More details about this plugin can be found here 'https://github.com/aghariakalbe/fnExchange-freshdesk'
 
 More Information
 ================
@@ -25,16 +22,16 @@ setup(
     version='0.1.1',
 
     # URL to your repo (if open source)
-    url='http://github.com/bhumilharia/fnexchange-slack',
+    url='https://github.com/aghariakalbe/fnExchange-freshdesk',
 
     license='Apache',
 
     # your name
-    author='Bhumil Haria',
+    author='Kalbe Abbas Agharia',
 
     # your email here
-    author_email='bhumilharia@gmail.com',
-    description='fnExchange plugin for Slack integration',
+    author_email='aghariakalbe@gmail.com',
+    description='fnExchange plugin for Freshdesk integration',
     long_description=__doc__,
     keywords='fnexchange plugin',
 
