@@ -3,9 +3,9 @@ import requests
 from fnexchange.core.plugins import AbstractPlugin
 
 
-class FreshdeskPlugin(AbstractPlugin):#change ticket id to id in payload later 
+class FreshdeskPlugin(AbstractPlugin):
 	
-	def create_ticket(self,payload):# Was earlier going into spam since deleted contacts go into spam
+	def create_ticket(self,payload):
 			headers = { 'Content-Type' : 'application/json' }
 			elements = payload["elements"]
 			response = requests.post(self.config.url,auth=(self.config.api_key,"x"),headers=headers,data = json.dumps(elements[0]))
@@ -23,7 +23,7 @@ class FreshdeskPlugin(AbstractPlugin):#change ticket id to id in payload later
 				'elements': elements  # return the same thing back
 			}
 	
-	def update_ticket(self,payload):#Put method is not allowed apparently, error 405--Couldnt update spam messages, see above,still not working
+	def update_ticket(self,payload):
 			headers = { 'Content-Type' : 'application/json' }
 			elements = payload["elements"]
 			ticket_id=str(elements[1]["ticket_id"])
@@ -41,7 +41,7 @@ class FreshdeskPlugin(AbstractPlugin):#change ticket id to id in payload later
 				'elements': elements  # return the same thing back
 			}
 	
-	def delete_ticket(self,payload):#Delete method is not allowed apparently, error 405-- error 405--Couldnt delete spam messages, see above
+	def delete_ticket(self,payload):
 			headers = { 'Content-Type' : 'application/json' }
 			elements=payload["elements"]
 			ticket_id=str(elements[0]["ticket_id"])
@@ -58,7 +58,7 @@ class FreshdeskPlugin(AbstractPlugin):#change ticket id to id in payload later
 				},
 				'elements': elements  # return the same thing back
 			}
-	def restore_ticket(self,payload):#'https://domain.freshdesk.com/api/v2/tickets/1/restore'
+	def restore_ticket(self,payload):
 			elements=payload["elements"]
 			headers={'Content-Type':'application/json'}
 			ticket_id=str(elements[0]["ticket_id"])
@@ -85,7 +85,7 @@ class FreshdeskPlugin(AbstractPlugin):#change ticket id to id in payload later
 			
 			return response.content
 	
-	def create_contact(self,payload): #Working
+	def create_contact(self,payload):
 			headers = { 'Content-Type' : 'application/json' } 
 			elements=payload["elements"]
 			contact_info=elements[0]["contact_info"]
@@ -111,7 +111,7 @@ class FreshdeskPlugin(AbstractPlugin):#change ticket id to id in payload later
 			response=requests.get(self.config.url1+'/'+ contact_id,auth= (self.config.api_key,'x'), headers=headers)
 			return response.content
 
-	def delete_contact(self,payload): #Working 
+	def delete_contact(self,payload):  
 			headers = { 'Content-Type' : 'application/json' }
 			elements=payload["elements"]
 			contact_id=str(elements[0]["contact_id"])
@@ -131,7 +131,7 @@ class FreshdeskPlugin(AbstractPlugin):#change ticket id to id in payload later
 				'elements': elements  # return the same thing back
 			}
 			
-	def update_contact(self,payload):#Put method is not allowed apparently, error 405--Couldnt update spam messages, see above,still not working
+	def update_contact(self,payload):
 			headers = { 'Content-Type' : 'application/json' }
 			elements = payload["elements"]
 			contact_id=str(elements[1]["contact_id"])
